@@ -15,5 +15,5 @@ code > div {
 }
 
 a {
-  @apply underline text-blue-600;
+  @apply underline text-blue-400;
 }
