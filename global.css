@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+article {
+  @apply mx-auto flex flex-col gap-8 p-8 max-w-[48rem];
+}
+
+article > section {
+  @apply flex flex-col gap-4 mx-auto rounded-2xl bg-primary-light p-8 shadow-lg;
+}
+
+code > div {
+  @apply flex flex-row;
+}
+
+a {
+  @apply underline text-blue-600;
+}
