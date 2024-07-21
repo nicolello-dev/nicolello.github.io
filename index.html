@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" class="w-full h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nicola Migone</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="bg-primary text-white w-full h-full">
+    <nav class="bg-primary-light text-xl rounded-b-2xl">
+      <div
+        class="max-w-3xl flex flex-row p-6 justify-between mx-auto underline font-semibold"
+      >
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a
+          download
+          target="_blank"
+          rel="noopener"
+          href="https://nicolellodevpersonal.s3.eu-central-1.amazonaws.com/Nicola_Migone_s_CV.pdf"
+          >CV</a
+        >
+      </div>
+    </nav>
+    <main>
+      <article id="about">
+        <h1 class="text-5xl my-8 mx-auto font-bold">Ciao!👋</h1>
+        <section>
+          <p class="text-xl font-semibold mb-4">
+            I'm Nicola, a software engineer based in Milan, Italy.
+          </p>
+          <p>
+            I'm a full-stack developer and a Python enthusiast pursuing a BSC in
+            CSE at Politecnico di Milano.
+            <br />
+            In my free time, I play the piano and learn languages. I've been
+            playing the piano since I was 4, and can speak Italian, Spanish,
+            English and Esperanto. I'm currently learning Chinese.
+          </p>
+        </section>
+      </article>
+      <article id="projects">
+        <h1 class="text-5xl my-8 mx-auto font-bold">Projects 👩‍💻</h1>
+        <h2 class="text-2xl my-4 font-semibold">AI, ML and similar</h2>
+        <section>
+          <h3 class="text-xl font-semibold mb-4">
+            Deepscribes (CTO)
+            <a
+              href="https://www.deepscribes.com"
+              target="_blank"
+              class="underline text-blue-600 visited:text-purple-700 mb-4"
+              >deepscribes.com</a
+            >
+          </h3>
+          <p>
+            Deepscribes is a student platform that helps students in the process
+            of transcribing their lectures. It's not just a powerful
+            speech-to-text, but it also provides a set of tools to interact with
+            the text, such as editing, highlighting, and much more.
+            <br />
+            Tech stack: NextJS, AWS, Drizzle, Clerk, Stripe, and more.
+          </p>
+        </section>
+        <section>
+          <h3 class="text-xl font-semibold mb-4">
+            Trivia AI Generator for kids
+          </h3>
+          <p>
+            A ChatGPT-powered AI generator that creates trivia questions around
+            a given topic. Made for kids, with a playful theme.
+            <br />
+            Tech stack: Python, GPT-3.5 and Flask
+          </p>
+        </section>
+        <h2 class="text-2xl my-4 font-semibold">Data analysis and scraping</h2>
+        <section>
+          <h3 class="text-xl font-semibold mb-4">
+            Blasketball
+            <a
+              href="https://blaseball-copy.vercel.app/"
+              target="_blank"
+              class="underline text-blue-600 visited:text-purple-700 mb-4"
+              >https://blaseball-copy.vercel.app/</a
+            >
+          </h3>
+          <p>
+            A blaseball clone where instead of simulating baseball games,
+            basketball games are simulated. The results are randomly generated
+            and exported to a PostgreSQL database.
+            <br />
+            Tech stack: NextJS, PostgreSQL, Python and Vercel.
+          </p>
+        </section>
+        <section>
+          <h3 class="text-xl font-semibold mb-4">NBA scores scraper</h3>
+          <p>
+            A python-powered web scraper that reads the NBA scores and uploads
+            them into a Google Sheets document.
+            <br />
+            Made with Python, BeautifulSoup, and Google Sheets API.
+          </p>
+        </section>
+      </article>
+    </main>
+    <footer id="contact">
+      <article>
+        <h1 class="text-5xl my-8 mx-auto font-bold">Contact ☎</h1>
+        <section>
+          <code class="block font-mono">
+            <div class="flex flex-row">
+              <span class="text-blue-400">let&nbsp;</span>
+              <span class="text-white">Nicola&nbsp;</span>
+              <span class="text-red-400">=&nbsp;</span>
+              <span class="text-red-400">new&nbsp;</span>
+              <span class="text-green-400">Person</span>
+              <span class="text-red-400">(</span>
+            </div>
+            <div>
+              <p class="text-orange-400">&emsp; email</p>
+              <p class="text-red-400">=</p>
+              <a
+                href="mailto:me@nicolello.dev"
+                class="text-yellow-300 underline"
+              >
+                "me@nicolello.dev"
+              </a>
+              <span class="text-white">,</span>
+            </div>
+            <div>
+              <p class="text-orange-400">&emsp; github</p>
+              <p class="text-red-400">=</p>
+              <a
+                href="https://github.com/nicolello-dev"
+                class="text-yellow-300 underline"
+              >
+                "nicolello-dev"
+              </a>
+              <span class="text-white">,</span>
+            </div>
+            <div>
+              <p class="text-orange-400">&emsp; Linkedin</p>
+              <p class="text-red-400">=</p>
+              <a
+                href="https://www.linkedin.com/in/nicola-migone/"
+                class="text-yellow-300 underline"
+              >
+                "nicola-migone"
+              </a>
+            </div>
+            <p class="text-red-400">)<span class="text-white">;</span></p></code
+          >
+        </section>
+      </article>
+    </footer>
+  </body>
+  <script>
+    // Make the title "scroll"
+    const title = document.querySelector("title");
+    let titleText = "Nicola Migone ";
+    let titleTextLength = titleText.length;
+    let titleTextIndex = 0;
+    setInterval(() => {
+      titleTextIndex++;
+      if (titleTextIndex > titleTextLength) {
+        titleTextIndex = 0;
+      }
+      title.innerText =
+        titleText.slice(titleTextIndex) + titleText.slice(0, titleTextIndex);
+    }, 300);
+  </script>
+</html>
