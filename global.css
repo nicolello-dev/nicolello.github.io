@@ -17,3 +17,22 @@ code > div {
 a {
   @apply underline text-blue-400;
 }
+
+/* Wave animation for the hand */
+#waving-hand {
+    display: inline-block;
+    transform-origin: bottom center;
+    animation: wave 4s ease-in-out infinite;
+    animation-iteration-count: infinite;
+}
+
+@keyframes wave {
+    0% { transform: rotate(0deg); }
+    5% { transform: rotate(14deg); }
+    10% { transform: rotate(-8deg); }
+    13% { transform: rotate(14deg); }
+    16% { transform: rotate(-4deg); }
+    20% { transform: rotate(10deg); }
+    33% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+}
