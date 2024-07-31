@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply sm:text-lg;
+}
+
 article {
   @apply mx-auto flex flex-col gap-8 p-8 max-w-[48rem];
 }
@@ -18,21 +22,61 @@ a {
   @apply underline text-blue-400;
 }
 
+.stack-wrapper {
+  @apply flex flex-row flex-wrap items-baseline gap-6;
+}
+
+.stack-wrapper > p {
+  @apply inline-flex items-center p-1 px-2 rounded-lg bg-sky-950;
+}
+
+#skills-images-wrapper {
+  @apply flex flex-row flex-wrap gap-6 justify-around;
+}
+
+#skills-images-wrapper > a {
+  @apply flex flex-col items-center gap-1 w-20;
+}
+
+#skills-images-wrapper > a > p {
+  @apply text-white no-underline;
+}
+
+#skills-images-wrapper > a > img {
+  @apply w-16 h-16 bg-white p-2 rounded-xl;
+}
+
 /* Wave animation for the hand */
 #waving-hand {
-    display: inline-block;
-    transform-origin: bottom center;
-    animation: wave 4s ease-in-out infinite;
-    animation-iteration-count: infinite;
+  display: inline-block;
+  transform-origin: bottom center;
+  animation: wave 4s ease-in-out infinite;
+  animation-iteration-count: infinite;
 }
 
 @keyframes wave {
-    0% { transform: rotate(0deg); }
-    5% { transform: rotate(14deg); }
-    10% { transform: rotate(-8deg); }
-    13% { transform: rotate(14deg); }
-    16% { transform: rotate(-4deg); }
-    20% { transform: rotate(10deg); }
-    33% { transform: rotate(0deg); }
-    100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  5% {
+    transform: rotate(14deg);
+  }
+  10% {
+    transform: rotate(-8deg);
+  }
+  13% {
+    transform: rotate(14deg);
+  }
+  16% {
+    transform: rotate(-4deg);
+  }
+  20% {
+    transform: rotate(10deg);
+  }
+  33% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
