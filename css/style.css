@@ -737,7 +737,7 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .stack-wrapper > p {
