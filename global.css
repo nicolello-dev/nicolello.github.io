@@ -30,6 +30,10 @@ a {
   @apply inline-flex items-center p-1 px-2 rounded-lg bg-sky-950;
 }
 
+.stack-wrapper > p > a {
+  @apply text-white no-underline;
+}
+
 #skills-images-wrapper {
   @apply flex flex-row flex-wrap gap-6 justify-around;
 }
