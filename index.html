@@ -7,7 +7,8 @@
     <title>Nicola Migone</title>
     <link rel="stylesheet" href="/css/style.css" />
   </head>
-  <body class="bg-primary text-white w-full h-full leading-relaxed">
+  <body class="bg-primary text-white w-full leading-relaxed relative">
+    <canvas class="w-full h-full absolute" style="z-index: -1"> </canvas>
     <nav class="bg-primary-light text-xl rounded-b-2xl">
       <div
         class="max-w-3xl flex flex-row p-6 justify-between mx-auto underline font-semibold"
@@ -392,7 +393,7 @@
         </section>
         <h2 class="text-2xl my-4 font-semibold items-center">Others</h2>
         <section>
-          <h3 class="text-xl font-semibold flex">
+          <h3 class="text-xl font-semibold flex flex-wrap">
             Knowurteacher &nbsp;
             <a href="https://www.knowurteacher.com" target="_blank">
               knowurteacher.com
@@ -521,7 +522,7 @@
 
     // Set styles to make everything small, that way even without Javascript everything is visible as normal
     anchorTags.forEach((c) => {
-      c.style.opacity = `0`;
+      // c.style.opacity = `0`;
     });
 
     const observer = new IntersectionObserver(
@@ -540,5 +541,53 @@
     );
 
     observer.observe(imagesWrapper.children[imagesWrapper.children.length - 1]);
+
+    // Canvas
+    /**
+     * @type {HTMLCanvasElement}
+     */
+    const canvas = document.querySelector("canvas");
+    const textSpacingX = 300;
+    const textSpacingY = 300;
+
+    canvas.setAttribute(
+      "width",
+      window.getComputedStyle(canvas, null).getPropertyValue("width")
+    );
+    canvas.setAttribute(
+      "height",
+      window.getComputedStyle(canvas, null).getPropertyValue("height")
+    );
+
+    const width = canvas.width;
+    const height = canvas.height;
+    /**
+     * @type {CanvasRenderingContext2D}
+     */
+    const ctx = canvas.getContext("2d");
+    ctx.font = "48px Arial";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
+    // Space the text across the canvas in a grid
+    // Each text should be 300px apart, so we will have viewportwidth / 300 texts in the x axis
+    const textPerLine = Math.floor(width / textSpacingX) + 1;
+    // Similar calculation for the amount of lines to be displaid
+    const lines = Math.floor(height / textSpacingY) + 1;
+    const text = "</>";
+    const textWidth = ctx.measureText(text).width;
+    const spacingSumPerLine = width - textPerLine * textWidth;
+    const spacingPerText = spacingSumPerLine / textPerLine;
+
+    for (let i = 0; i < textPerLine; i++) {
+      for (let j = 0; j < lines; j++) {
+        ctx.fillText(
+          text,
+          i * spacingPerText +
+            i * textWidth +
+            spacingPerText / 2 +
+            Math.random() * 30,
+          j * textSpacingY + Math.random() * 50
+        );
+      }
+    }
   </script>
 </html>
