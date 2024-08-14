@@ -550,44 +550,50 @@
     const textSpacingX = 300;
     const textSpacingY = 300;
 
-    canvas.setAttribute(
-      "width",
-      window.getComputedStyle(canvas, null).getPropertyValue("width")
-    );
-    canvas.setAttribute(
-      "height",
-      window.getComputedStyle(canvas, null).getPropertyValue("height")
-    );
+    function setUpCanvas() {
+      canvas.setAttribute(
+        "width",
+        window.getComputedStyle(canvas, null).getPropertyValue("width")
+      );
+      canvas.setAttribute(
+        "height",
+        window.getComputedStyle(canvas, null).getPropertyValue("height")
+      );
 
-    const width = canvas.width;
-    const height = canvas.height;
-    /**
-     * @type {CanvasRenderingContext2D}
-     */
-    const ctx = canvas.getContext("2d");
-    ctx.font = "48px Arial";
-    ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
-    // Space the text across the canvas in a grid
-    // Each text should be 300px apart, so we will have viewportwidth / 300 texts in the x axis
-    const textPerLine = Math.floor(width / textSpacingX) + 1;
-    // Similar calculation for the amount of lines to be displaid
-    const lines = Math.floor(height / textSpacingY) + 1;
-    const text = "</>";
-    const textWidth = ctx.measureText(text).width;
-    const spacingSumPerLine = width - textPerLine * textWidth;
-    const spacingPerText = spacingSumPerLine / textPerLine;
+      const width = canvas.width;
+      const height = canvas.height;
+      /**
+       * @type {CanvasRenderingContext2D}
+       */
+      const ctx = canvas.getContext("2d");
+      ctx.font = "48px Arial";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
+      // Space the text across the canvas in a grid
+      // Each text should be 300px apart, so we will have viewportwidth / 300 texts in the x axis
+      const textPerLine = Math.floor(width / textSpacingX) + 1;
+      // Similar calculation for the amount of lines to be displaid
+      const lines = Math.floor(height / textSpacingY) + 1;
+      const text = "</>";
+      const textWidth = ctx.measureText(text).width;
+      const spacingSumPerLine = width - textPerLine * textWidth;
+      const spacingPerText = spacingSumPerLine / textPerLine;
 
-    for (let i = 0; i < textPerLine; i++) {
-      for (let j = 0; j < lines; j++) {
-        ctx.fillText(
-          text,
-          i * spacingPerText +
-            i * textWidth +
-            spacingPerText / 2 +
-            Math.random() * 30,
-          j * textSpacingY + Math.random() * 50
-        );
+      for (let i = 0; i < textPerLine; i++) {
+        for (let j = 0; j < lines; j++) {
+          ctx.fillText(
+            text,
+            i * spacingPerText +
+              i * textWidth +
+              spacingPerText / 2 +
+              Math.random() * 30,
+            j * textSpacingY + Math.random() * 50
+          );
+        }
       }
     }
+
+    setUpCanvas();
+
+    window.addEventListener("resize", setUpCanvas); // TODO improve performance
   </script>
 </html>
