@@ -522,7 +522,7 @@
 
     // Set styles to make everything small, that way even without Javascript everything is visible as normal
     anchorTags.forEach((c) => {
-      // c.style.opacity = `0`;
+      c.style.opacity = `0`;
     });
 
     const observer = new IntersectionObserver(
@@ -540,7 +540,11 @@
       }
     );
 
-    observer.observe(imagesWrapper.children[imagesWrapper.children.length - 1]);
+    observer.observe(
+      imagesWrapper.children[
+        window.innerWidth > 760 ? imagesWrapper.children.length - 1 : 0
+      ]
+    );
 
     // Canvas
     /**
