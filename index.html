@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="w-full h-full">
+<html lang="en" class="w-full h-full scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,14 +11,11 @@
     <canvas class="w-full h-full absolute" style="z-index: -1"> </canvas>
     <nav class="bg-primary-light text-xl rounded-b-2xl">
       <div
-        class="max-w-3xl flex flex-row p-6 justify-between mx-auto underline font-semibold"
+        class="max-w-3xl flex flex-row p-6 sm:px-8 justify-between mx-auto underline font-semibold"
       >
-        <a href="#projects" class="no-underline text-white visited:text-white"
-          >Projects</a
-        >
-        <a href="#contact" class="no-underline text-white visited:text-white"
-          >Contact</a
-        >
+        <a href="#projects" class="no-underline text-white visited:text-white">
+          Projects
+        </a>
         <a
           download
           class="no-underline text-white visited:text-white"
@@ -27,6 +24,17 @@
           href="https://nicolellodevpersonal.s3.eu-central-1.amazonaws.com/Nicola_Migone_s_CV.pdf"
         >
           CV
+          <img
+            class="inline relative -top-[4px]"
+            src="/assets/external-link.svg"
+            width="16"
+            height="16"
+            alt=""
+            aria-hidden="true"
+          />
+        </a>
+        <a href="#contact" class="no-underline text-white visited:text-white">
+          Contact
         </a>
       </div>
     </nav>
@@ -69,70 +77,74 @@
             class="transition-all duration-1000 *:transition-all *:duration-1000"
           >
             <a href="https://aws.amazon.com" rel="nofollow">
-              <img src="/assets/aws.svg" alt="aws" />
+              <img src="/assets/aws.svg" alt="aws" loading="lazy" />
               <p>AWS</p>
             </a>
             <a href="https://www.gnu.org/software/bash/" rel="nofollow">
-              <img src="/assets/bash.svg" alt="bash" />
+              <img src="/assets/bash.svg" alt="bash" loading="lazy" />
               <p>Bash</p>
             </a>
             <a href="https://expressjs.com" rel="nofollow">
-              <img src="/assets/express.svg" alt="express" />
+              <img src="/assets/express.svg" alt="express" loading="lazy" />
               <p>Express</p>
             </a>
             <a href="https://flask.palletsprojects.com/" rel="nofollow">
-              <img src="/assets/flask.svg" alt="flask" />
+              <img src="/assets/flask.svg" alt="flask" loading="lazy" />
               <p>Flask</p>
             </a>
             <a href="https://git-scm.com/" rel="nofollow">
-              <img src="/assets/git.svg" alt="git" />
+              <img src="/assets/git.svg" alt="git" loading="lazy" />
               <p>Git</p>
             </a>
             <a href="https://www.java.com" rel="nofollow">
-              <img src="/assets/java.svg" alt="java" />
+              <img src="/assets/java.svg" alt="java" loading="lazy" />
               <p>Java</p>
             </a>
             <a
               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
               rel="nofollow"
             >
-              <img src="/assets/javascript.svg" alt="javascript" />
+              <img
+                src="/assets/javascript.svg"
+                alt="javascript"
+                loading="lazy"
+              />
               <p>JavaScript</p>
             </a>
             <a href="https://www.mysql.com/" rel="nofollow">
-              <img src="/assets/mysql.svg" alt="mysql" />
+              <img src="/assets/mysql.svg" alt="mysql" loading="lazy" />
               <p>MySQL</p>
             </a>
             <a href="https://nextjs.org/" rel="nofollow">
-              <img src="/assets/nextjs.svg" alt="nextjs" />
+              <img src="/assets/nextjs.svg" alt="nextjs" loading="lazy" />
               <p>Next.js</p>
             </a>
             <a href="https://nodejs.org" rel="nofollow">
-              <img src="/assets/nodejs.svg" alt="nodejs" />
+              <img src="/assets/nodejs.svg" alt="nodejs" loading="lazy" />
               <p>Node.js</p>
             </a>
             <a href="https://www.php.net" rel="nofollow">
-              <img src="/assets/php.svg" alt="php" />
+              <img src="/assets/php.svg" alt="php" loading="lazy" />
               <p>PHP</p>
             </a>
             <a href="https://www.postgresql.org" rel="nofollow">
-              <img src="/assets/pgsql.svg" alt="postgresql" />
+              <img src="/assets/pgsql.svg" alt="postgresql" loading="lazy" />
               <p>pgSQL</p>
             </a>
             <a href="https://www.prisma.io" rel="nofollow">
-              <img src="/assets/prisma.svg" alt="prisma" />
+              <img src="/assets/prisma.svg" alt="prisma" loading="lazy" />
               <p>Prisma</p>
             </a>
             <a href="https://www.python.org" rel="nofollow">
-              <img src="/assets/python.svg" alt="python" />
+              <img src="/assets/python.svg" alt="python" loading="lazy" />
               <p>Python</p>
             </a>
             <a href="https://reactjs.org/" rel="nofollow">
-              <img src="/assets/react.svg" alt="react" />
+              <img src="/assets/react.svg" alt="react" loading="lazy" />
               <p>React</p>
             </a>
             <a href="https://www.selenium.dev" rel="nofollow">
-              <img src="/assets/selenium.svg" alt="selenium" />
+              <img src="/assets/selenium.svg" alt="selenium" loading="lazy" />
               <p>Selenium</p>
             </a>
             <a href="https://tailwindcss.com/" rel="nofollow">
@@ -140,6 +152,7 @@
                 src="/assets/tailwind.svg"
                 alt="tailwind"
                 data-canonical-src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg"
+                loading="lazy"
               />
               <p>Tailwind</p>
             </a>
@@ -164,6 +177,12 @@
             </h2>
             <p class="break-keep">Jun 2024 - Sep 2024</p>
           </div>
+          <img
+            src="/assets/projects/medquizz.webp"
+            alt="Medquizz"
+            loading="lazy"
+            class="w-full h-auto aspect-video rounded-2xl"
+          />
           <p>
             Medquizz is a platform that helps medical students prepare for their
             exams. It provides a set of tools to create quizzes, as well as the
@@ -218,6 +237,12 @@
             </h2>
             <p class="break-keep">Oct 2023 - Sep 2024</p>
           </div>
+          <img
+            src="/assets/projects/deepscribes.webp"
+            alt="Deepscribes"
+            loading="lazy"
+            class="w-full h-auto aspect-video rounded-2xl"
+          />
           <p>
             Deepscribes is a student platform that helps students in the process
             of transcribing their lectures. It's not just a powerful
@@ -393,7 +418,7 @@
         </section>
         <h2 class="text-2xl my-4 font-semibold items-center">Others</h2>
         <section>
-          <h3 class="text-xl font-semibold flex flex-wrap">
+          <h3 class="text-xl font-semibold flex flex-wrap items-end">
             Knowurteacher &nbsp;
             <a href="https://www.knowurteacher.com" target="_blank">
               knowurteacher.com
@@ -403,14 +428,31 @@
               href="https://github.com/nicolello-dev/knowurteacher"
               target="_blank"
               class="block"
+              style="text-decoration: none"
             >
               <img
-                class="w-4 h-4 inline"
+                class="w-6 h-6 inline"
                 src="/assets/github.svg"
+                width="24"
+                height="24"
                 alt="github"
+              />
+              <img
+                class="inline relative right-1 -top-[6px]"
+                src="/assets/external-link.svg"
+                width="16"
+                height="16"
+                alt=""
+                aria-hidden="true"
               />
             </a>
           </h3>
+          <img
+            src="/assets/projects/knowurteacher.webp"
+            alt="Knowurteacher"
+            loading="lazy"
+            class="w-full h-auto aspect-video rounded-2xl"
+          />
           <p>
             Hobby project made to assist students in rating their teachers based
             on strictness and other criteria. It is intended for Italian
@@ -452,17 +494,28 @@
           </div>
         </section>
         <section>
-          <h3 class="text-xl font-semibold flex flex-row items-center">
+          <h3 class="text-xl font-semibold flex flex-wrap items-end">
             Mindustry remote save &nbsp;
             <a
               href="https://github.com/nicolello-dev/mindustry-remote-save"
               target="_blank"
               class="block"
+              style="text-decoration: none"
             >
               <img
-                class="w-4 h-4 inline"
+                class="w-6 h-6 inline"
                 src="/assets/github.svg"
+                width="24"
+                height="24"
                 alt="github"
+              />
+              <img
+                class="inline relative right-1 -top-[6px]"
+                src="/assets/external-link.svg"
+                width="16"
+                height="16"
+                alt=""
+                aria-hidden="true"
               />
             </a>
           </h3>
@@ -497,7 +550,7 @@
       </article>
     </footer>
   </body>
-  <script>
+  <script type="text/javascript">
     console.log("Hey! what are you doing here?? 🕵️");
     // Make the title "scroll"
     const title = document.querySelector("title");
@@ -553,6 +606,10 @@
     const canvas = document.querySelector("canvas");
     const textSpacingX = 300;
     const textSpacingY = 300;
+    /**
+     * @type {CanvasRenderingContext2D}
+     */
+    const ctx = canvas.getContext("2d");
 
     function setUpCanvas() {
       canvas.setAttribute(
@@ -566,10 +623,6 @@
 
       const width = canvas.width;
       const height = canvas.height;
-      /**
-       * @type {CanvasRenderingContext2D}
-       */
-      const ctx = canvas.getContext("2d");
       ctx.font = "48px Arial";
       ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
       // Space the text across the canvas in a grid
@@ -597,7 +650,19 @@
     }
 
     setUpCanvas();
+    let i;
 
-    window.addEventListener("resize", setUpCanvas); // TODO improve performance
+    window.addEventListener("resize", () => {
+      if (i) {
+        // Clear the canvas so we don't have a flickering effect
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        clearTimeout(i);
+      }
+      // Only set up the canvas after the user has stopped resizing the window for 100 ms
+      // So it doesn't have to be done every for every action in the drag
+      i = setTimeout(() => {
+        setUpCanvas();
+      }, 100);
+    });
   </script>
 </html>
