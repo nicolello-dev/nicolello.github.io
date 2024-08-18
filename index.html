@@ -7,7 +7,9 @@
     <title>Nicola Migone</title>
     <link rel="stylesheet" href="/css/style.css" />
   </head>
-  <body class="bg-primary text-white w-full leading-relaxed relative">
+  <body
+    class="bg-primary text-white w-full leading-relaxed relative overflow-y-hidden"
+  >
     <canvas class="w-full h-full absolute" style="z-index: -1"> </canvas>
     <nav class="bg-primary-light text-xl rounded-b-2xl">
       <div
@@ -620,12 +622,37 @@
      * @type {HTMLCanvasElement}
      */
     const canvas = document.querySelector("canvas");
+    const body = document.querySelector("body");
     const textSpacingX = 300;
     const textSpacingY = 300;
     /**
      * @type {CanvasRenderingContext2D}
      */
     const ctx = canvas.getContext("2d");
+
+    class Text {
+      constructor(x, y, text) {
+        this.x = x;
+        this.y = y;
+        this.text = text;
+      }
+
+      draw() {
+        let y = this.y + window.scrollY / 2;
+        while (y < 0) {
+          y += body.clientHeight;
+        }
+        while (y > body.clientHeight) {
+          y -= body.clientHeight;
+        }
+        ctx.fillText(this.text, this.x, y);
+      }
+    }
+
+    /**
+     * @type {Text[]}
+     */
+    objects = [];
 
     function setUpCanvas() {
       canvas.setAttribute(
@@ -651,33 +678,45 @@
       const spacingSumPerLine = width - textPerLine * textWidth;
       const spacingPerText = spacingSumPerLine / textPerLine;
 
+      objects = [];
+
       for (let i = 0; i < textPerLine; i++) {
         for (let j = 0; j < lines; j++) {
-          ctx.fillText(
-            text,
-            i * spacingPerText +
-              i * textWidth +
-              spacingPerText / 2 +
-              Math.random() * 30,
-            j * textSpacingY + Math.random() * 50
+          objects.push(
+            new Text(
+              i * spacingPerText +
+                i * textWidth +
+                spacingPerText / 2 +
+                Math.random() * 30,
+              j * textSpacingY + Math.random() * 50,
+              text
+            )
           );
         }
       }
     }
 
     setUpCanvas();
-    let i;
+    objects.forEach((o) => o.draw());
 
+    window.addEventListener("scroll", () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      objects.forEach((o) => o.draw());
+    });
+
+    let i;
     window.addEventListener("resize", () => {
       if (i) {
         // Clear the canvas so we don't have a flickering effect
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        objects.forEach((o) => o.draw());
         clearTimeout(i);
       }
       // Only set up the canvas after the user has stopped resizing the window for 100 ms
       // So it doesn't have to be done every for every action in the drag
       i = setTimeout(() => {
         setUpCanvas();
+        objects.forEach((o) => o.draw());
       }, 100);
     });
   </script>
