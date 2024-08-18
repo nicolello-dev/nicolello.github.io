@@ -18,6 +18,10 @@ code > div {
   @apply flex flex-row;
 }
 
+p {
+  @apply text-gray-100;
+}
+
 a {
   @apply underline text-blue-400;
 }
