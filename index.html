@@ -580,14 +580,6 @@
     let titleText = "Nicola Migone ";
     let titleTextLength = titleText.length;
     let titleTextIndex = 0;
-    setInterval(() => {
-      titleTextIndex++;
-      if (titleTextIndex > titleTextLength) {
-        titleTextIndex = 0;
-      }
-      title.innerText =
-        titleText.slice(titleTextIndex) + titleText.slice(0, titleTextIndex);
-    }, 300);
 
     /*       SKILLS ANIMATION       */
     const imagesWrapper = document.getElementById("skills-images-wrapper");
@@ -701,28 +693,45 @@
       }
     }
 
-    setUpCanvas();
-    objects.forEach((o) => o.draw());
+    const isReduced =
+      window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
+      window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 
-    window.addEventListener("scroll", () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (!isReduced) {
+      // Only set up background movement if the user doesn't have reduced motion preference
+      setUpCanvas();
       objects.forEach((o) => o.draw());
-    });
 
-    let i;
-    window.addEventListener("resize", () => {
-      if (i) {
-        // Clear the canvas so we don't have a flickering effect
+      window.addEventListener("scroll", () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         objects.forEach((o) => o.draw());
-        clearTimeout(i);
+      });
+
+      let i;
+      window.addEventListener("resize", () => {
+        if (i) {
+          // Clear the canvas so we don't have a flickering effect
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          objects.forEach((o) => o.draw());
+          clearTimeout(i);
+        }
+        // Only set up the canvas after the user has stopped resizing the window for 100 ms
+        // So it doesn't have to be done every for every action in the drag
+        i = setTimeout(() => {
+          setUpCanvas();
+          objects.forEach((o) => o.draw());
+        }, 100);
+      });
+    }
+
+    // Don't move the title if the user has prefers reduced motion preference
+    setInterval(() => {
+      titleTextIndex++;
+      if (titleTextIndex > titleTextLength) {
+        titleTextIndex = 0;
       }
-      // Only set up the canvas after the user has stopped resizing the window for 100 ms
-      // So it doesn't have to be done every for every action in the drag
-      i = setTimeout(() => {
-        setUpCanvas();
-        objects.forEach((o) => o.draw());
-      }, 100);
-    });
+      title.innerText =
+        titleText.slice(titleTextIndex) + titleText.slice(0, titleTextIndex);
+    }, 300);
   </script>
 </html>
