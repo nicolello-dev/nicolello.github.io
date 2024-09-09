@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" class="w-full h-full scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Nicola Migone's portfolio website" />
+    <title>Nicola Migone</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- UMAMI ANALYTICS -->
+    <script
+      defer
+      src="https://logical-tomcat-nationally.ngrok-free.app/script.js"
+      data-website-id="f8767e3d-f746-4be6-add1-280ebd69ba1e"
+    ></script>
+    <!-- Press Start 2P font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-primary text-white w-full leading-relaxed relative">
+    <canvas class="w-full h-full absolute" style="z-index: -1"> </canvas>
+    <main>
+      <article>
+        <h1 class="text-5xl my-8 mx-auto font-bold">Chipotle order</h1>
+      </article>
+      <article>
+        <section>
+          <h3 class="text-xl font-semibold">Chipotle - burrito ^ bowl</h3>
+          <div class="stack-wrapper">
+            <p>Any meat</p>
+            <p>White rice</p>
+            <p>Pinto beans (pref)</p>
+            <p>Cheese</p>
+          </div>
+        </section>
+        <section>
+          <h3 class="text-xl font-semibold">Poke</h3>
+          <div class="stack-wrapper">
+            <p>Riso bianco</p>
+            <p>Edamame</p>
+            <p>Pomodorini</p>
+            <p>Mais</p>
+            <p>Carote</p>
+            <p>Germogli di soia</p>
+            <p>Salmone e/o tonno</p>
+            <p>Salsa avocado e/o teriyaki</p>
+          </div>
+        </section>
+        <section>
+          <h3 class="text-xl font-semibold">Pizza - in ordine</h3>
+          <div class="stack-wrapper">
+            <p>Maialona</p>
+            <p>Diavola</p>
+            <p>Calzone (fritto e non)</p>
+            <p>Quattro stagioni</p>
+            <p>'nduja</p>
+            <p>Melanzana</p>
+            <p>Qualsiasi</p>
+          </div>
+        </section>
+      </article>
+    </main>
+  </body>
+  <script type="text/javascript">
+    console.log("Hey! what are you doing here?? 🕵️");
+
+    // Canvas
+    /**
+     * @type {HTMLCanvasElement}
+     */
+    const canvas = document.querySelector("canvas");
+    const body = document.querySelector("body");
+    const textSpacingX = 300;
+    const textSpacingY = 300;
+    /**
+     * @type {CanvasRenderingContext2D}
+     */
+    const ctx = canvas.getContext("2d");
+
+    class Text {
+      constructor(x, y, text) {
+        this.x = x;
+        this.y = y;
+        this.text = text;
+      }
+
+      draw() {
+        let y = this.y + window.scrollY / 2;
+        while (y < 0) {
+          y += body.clientHeight;
+        }
+        while (y > body.clientHeight) {
+          y -= body.clientHeight;
+        }
+        ctx.fillText(this.text, this.x, y);
+      }
+    }
+
+    /**
+     * @type {Text[]}
+     */
+    objects = [];
+
+    function setUpCanvas() {
+      canvas.setAttribute(
+        "width",
+        window.getComputedStyle(canvas, null).getPropertyValue("width")
+      );
+      canvas.setAttribute(
+        "height",
+        window.getComputedStyle(canvas, null).getPropertyValue("height")
+      );
+
+      const width = canvas.width;
+      const height = canvas.height;
+      ctx.font = "48px Arial";
+      ctx.fillStyle = "rgba(255, 255, 255, 0.05)";
+      // Space the text across the canvas in a grid
+      // Each text should be 300px apart, so we will have viewportwidth / 300 texts in the x axis
+      const textPerLine = Math.floor(width / textSpacingX) + 1;
+      // Similar calculation for the amount of lines to be displaid
+      const lines = Math.floor(height / textSpacingY) + 1;
+      const text = "</>";
+      const textWidth = ctx.measureText(text).width;
+      const spacingSumPerLine = width - textPerLine * textWidth;
+      const spacingPerText = spacingSumPerLine / textPerLine;
+
+      objects = [];
+
+      for (let i = 0; i < textPerLine; i++) {
+        for (let j = 0; j < lines; j++) {
+          objects.push(
+            new Text(
+              i * spacingPerText +
+                i * textWidth +
+                spacingPerText / 2 +
+                Math.random() * 30,
+              j * textSpacingY + Math.random() * 50,
+              text
+            )
+          );
+        }
+      }
+    }
+
+    const isReduced =
+      window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
+      window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+
+    if (!isReduced) {
+      // Only set up background movement if the user doesn't have reduced motion preference
+      setUpCanvas();
+      objects.forEach((o) => o.draw());
+
+      window.addEventListener("scroll", () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        objects.forEach((o) => o.draw());
+      });
+
+      let i;
+      window.addEventListener("resize", () => {
+        if (i) {
+          // Clear the canvas so we don't have a flickering effect
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          objects.forEach((o) => o.draw());
+          clearTimeout(i);
+        }
+        // Only set up the canvas after the user has stopped resizing the window for 100 ms
+        // So it doesn't have to be done every for every action in the drag
+        i = setTimeout(() => {
+          setUpCanvas();
+          objects.forEach((o) => o.draw());
+        }, 100);
+      });
+    }
+  </script>
+</html>

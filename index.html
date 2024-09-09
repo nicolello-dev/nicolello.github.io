@@ -737,14 +737,14 @@
     }
 
     // Don't move the title if the user has prefers reduced motion preference
-    setInterval(() => {
-      titleTextIndex++;
-      if (titleTextIndex > titleTextLength) {
-        titleTextIndex = 0;
-      }
-      title.innerText =
-        titleText.slice(titleTextIndex) + titleText.slice(0, titleTextIndex);
-    }, 300);
+    // setInterval(() => {
+    //   titleTextIndex++;
+    //   if (titleTextIndex > titleTextLength) {
+    //     titleTextIndex = 0;
+    //   }
+    //   title.innerText =
+    //     titleText.slice(titleTextIndex) + titleText.slice(0, titleTextIndex);
+    // }, 300);
 
     // Konami code easter egg
     const konamiCode = [
