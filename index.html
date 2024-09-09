@@ -12,10 +12,15 @@
       src="https://logical-tomcat-nationally.ngrok-free.app/script.js"
       data-website-id="f8767e3d-f746-4be6-add1-280ebd69ba1e"
     ></script>
+    <!-- Press Start 2P font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body
-    class="bg-primary text-white w-full leading-relaxed relative overflow-y-hidden"
-  >
+  <body class="bg-primary text-white w-full leading-relaxed relative">
     <canvas class="w-full h-full absolute" style="z-index: -1"> </canvas>
     <nav class="bg-primary-light text-xl rounded-b-2xl">
       <div
@@ -554,7 +559,14 @@
       <article>
         <h1 class="text-5xl my-8 mx-auto font-bold">Contact ☎</h1>
         <section style="width: min-content; max-width: 100%; overflow-x: auto">
-          <pre style="margin: 0; line-height: 125%; margin: 0px auto">
+          <pre
+            style="
+              margin: 0;
+              line-height: 125%;
+              margin: 0px auto;
+              font-size: 1.125rem;
+            "
+          >
 <span style="color: #66d9ef">const</span> <span style="color: #a6e22e">Nicola</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">Person</span><span style="color: #f8f8f2">({</span>
     <span style="color: #a6e22e">email</span><span style="color: #f92672">:</span> <a href="mailto:me@nicolello.dev" target="_blank" rel="noreferrer" style="color: #e6db74">&quot;me@nicolello.dev&quot;</a><span style="color: #f8f8f2">,</span>
     <span style="color: #a6e22e">github</span><span style="color: #f92672">:</span> <a href="https://github.com/nicolello-dev" target="_blank" rel="noreferrer" style="color: #e6db74">&quot;nicolello-dev&quot;</a><span style="color: #f8f8f2">,</span>
@@ -563,9 +575,18 @@
         </section>
       </article>
     </footer>
+    <small class="block mx-auto text-center p-4 m-4">
+      P.S.: Try the Konami code! (<button onclick="reloadPage()">
+        refresh
+      </button>
+      to reset) 🎮
+    </small>
   </body>
   <script type="text/javascript">
     console.log("Hey! what are you doing here?? 🕵️");
+    function reloadPage() {
+      window.location.reload();
+    }
     // Make the title "scroll"
     const title = document.querySelector("title");
     let titleText = "Nicola Migone ";
@@ -724,5 +745,33 @@
       title.innerText =
         titleText.slice(titleTextIndex) + titleText.slice(0, titleTextIndex);
     }, 300);
+
+    // Konami code easter egg
+    const konamiCode = [
+      "ArrowUp",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+      "b",
+      "a",
+    ];
+    let konamiCodePosition = 0;
+    document.addEventListener("keydown", (e) => {
+      if (e.key === konamiCode[konamiCodePosition]) {
+        konamiCodePosition++;
+        if (konamiCodePosition === konamiCode.length) {
+          // Add Player 2 font to the page
+          document.querySelector("body").classList.add("konami");
+          document.querySelector("pre").style.fontFamily = "inherit";
+          konamiCodePosition = 0;
+        }
+      } else {
+        konamiCodePosition = 0;
+      }
+    });
   </script>
 </html>

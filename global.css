@@ -2,8 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
 body {
   @apply sm:text-lg;
+}
+
+.konami {
+  font-family: "Press Start 2P";
+  font-size: 0.75rem;
 }
 
 article {
